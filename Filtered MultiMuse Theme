@@ -1,0 +1,624 @@
+<!-- 
+ 
+                ON MY YOUTH — THEME PAGE PACK : MULTI-MUSE EDITION
+                    by ttenvely ( https://ttenvely.tumblr.com/ )
+ 
+ 
+        if you have any questions, please don't hesitate to message me! 
+ 
+        do NOT remove any credit & do NOT use as a basecode
+        and please do NOT take any part of this code & claim it as your own!
+ 
+ 
+        CREDIT:
+ 
+        https://fonts.google.com/
+        https://www.w3schools.com/
+ 
+-->                 
+ 
+<html>
+<head>
+ 
+<title>{Title}</title>
+ 
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik&display=swap" rel="stylesheet">
+ 
+<style type="text/css">
+ 
+/* tumblr controls styling by cyantists */
+iframe.tmblr-iframe {
+    z-index:99999999999999!important;
+    top:0!important;
+    right:0!important;
+    opacity:0.4;
+    /* delete invert(1) from here 
+        filter:invert(1) contrast(150%);
+        -webkit-filter:invert(1) contrast(150%);
+        -o-filter:invert(1) contrast(150%);
+        -moz-filter:invert(1) contrast(150%);
+        -ms-filter:invert(1) contrast(150%);
+    /* to here if your blog has a dark background */
+    transform:scale(0.65);
+    transform-origin:100% 0;
+    -webkit-transform:scale(0.65);
+    -webkit-transform-origin:100% 0;
+    -o-transform:scale(0.65);
+    -o-transform-origin:100% 0;
+    -moz-transform:scale(0.65);
+    -moz-transform-origin:100% 0;
+    -ms-transform:scale(0.65);
+    -ms-transform-origin:100% 0;}
+ 
+iframe.tmblr-iframe:hover {
+    opacity:0.6!important;}
+/* end control styling */
+ 
+::-webkit-scrollbar {
+    width:10px;}
+ 
+::-webkit-scrollbar-track {
+    background-color:var(--background);}
+ 
+::-webkit-scrollbar-thumb {
+    background-color:var(--accent);
+    border:1px solid var(--border);}
+ 
+::-webkit-scrollbar-corner {
+    background-color:var(--background);}  
+ 
+::selection { 
+    color:var(--fontcolor); 
+    background-color:var(--accent);} 
+::-webkit-scrollbar {background-color:#888; height:4px; width:6px}
+::-webkit-scrollbar-thumb:vertical {background-color:#333; height:50px}
+::-webkit-scrollbar-thumb:horizontal {background-color:#333; height:8px!important}
+ 
+:root {
+ 
+                /* CHANGE ALL OF YOUR FONTS / COLORS HERE */
+ 
+ 
+    --font-family: 'Playfair Display', serif;
+    --fontsize:     12px;
+    --fcnamefont:   'Playfair Display', serif;
+    --fcnamesize:   22px;    
+    --titlefont:    'Playfair Display', serif;
+    --titlesize:    26px;
+ 
+    --background:   #141414;    /* FOR LIGHT THEME :  #808080 */
+    --bglines:      #222222;    /* FOR LIGHT THEME :  #CCCCCC */
+    --bgcolor:      #000000;    /* FOR LIGHT THEME :  #FFFFFF */
+ 
+    --fontcolor:    #F6F6F6;    /* FOR LIGHT THEME :  #262626 */
+    --bold:         #F2992E;    /* FOR LIGHT THEME :  #A8610B */
+    --accent:       #313131;    /* FOR LIGHT THEME :  #8C8C8C */
+    --accent2:      #222222;    /* FOR LIGHT THEME :  #BFBFBF */
+    --border:       #3E3E3E;    /* FOR LIGHT THEME :  #999999 */
+ 
+}
+
+
+ 
+body { 
+    font-family:var(--fontfamily);
+    font-size:var(--fontsize);
+    background-color:var(--background);
+    /* delete from here down if you want a solid background */
+    background-image:linear-gradient(var(--bglines) 1.1px, transparent 1.1px), linear-gradient(to right, var(--bglines) 1.1px, var(--bgcolor) 1.1px);
+    background-size:22px 22px;
+    background-attachment:fixed;
+    /* end delete here */
+    color:var(--fontcolor); 
+    text-align:center;}
+ 
+b { 
+    color:var(--bold);
+    font-weight:normal;
+    font-size:var(--fontsize);}
+ 
+a { 
+    text-decoration:none; 
+    font-size:var(--fontsize); 
+    color:var(--fontcolor);}
+ 
+#footer { 
+    position:fixed; 
+    left:0; bottom:0;
+    width:100%;
+    height:100px;
+    background-color:var(--accent2);}
+ 
+.footer {
+    background-color:var(--accent2);
+    border-top:1px solid var(--border);
+    font-size:var(--fontsize);
+    color:var(--font); 
+    letter-spacing:1px;
+    text-align:center;
+    padding:10px;}
+ 
+.footer a:hover {
+    text-decoration:underline;
+    text-decoration-style:wavy;
+    text-decoration-color:var(--bold);}    
+ 
+.title {
+    font-family:var(--titlefont);
+    font-size:var(--titlesize);
+    text-transform:uppercase;
+    letter-spacing:1px;}
+ 
+#container { 
+    margin-left:auto; margin-right:auto;
+    margin-top:20px;
+    margin-bottom:120px;}
+ 
+.box { 
+    display:inline-block; 
+    background-color:var(--accent2); 
+    height:300px; 
+    width:450px; 
+    margin:20px; 
+    transition-duration:1s; 
+    border:1px solid var(--border);}
+ 
+.fc { 
+    display:block;
+    border-right:1px solid var(--border);
+    float:left;}
+ 
+.fc img { 
+    object-fit:cover;
+    width:200px;
+    height:300px;}
+ 
+.muse-bio { 
+    text-align:justify;
+    text-align-last:center;
+    height:169px;
+    padding:10px 20px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    border-bottom:1px solid var(--border);}
+ 
+.muse-name { 
+    font-family:var(--fcnamefont);
+    font-size:var(--fcnamesize);
+    background-color:var(--accent);
+    height:42px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    letter-spacing:1px;
+    color:var(--fontcolor);
+    text-transform:uppercase;}
+ 
+.fc-name {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding-bottom:10px;
+    background-color:var(--accent);
+    border-bottom:1px solid var(--border);
+    color:var(--bold);
+    font-style:italic;}    
+ 
+.muse-age {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    float:right;
+    font-size:20px;
+    width:60px;
+    height:25px;
+    padding:10px;}
+ 
+.muse-age:after {
+    content:'years old';
+    font-size:10px;}
+ 
+.stat {
+    display:inline-block;
+    text-align:center;
+    border-right:1px solid var(--border);
+    width:168px;
+    height:25px;
+    padding:8px 0px 10px 0px;}
+
+    
+    .sidebar {
+        float:left;
+        width:275px;
+        background:#213f52;
+        height:100%;
+        padding:0;
+        font-family:"Khula", Helvetica, Arial, sans-serif;
+        overflow:hidden;
+    }
+    
+    .sidebar::after {
+        clear:both;
+    }
+    
+    h1 {
+        text-transform:uppercase;
+        text-align:center;
+        padding: 10px 20px;
+        padding-bottom:0px;
+        margin:10px 0px;
+        z-index:0;
+        position:relative;
+        letter-spacing:1px;
+        font-weight:300;
+        color:#eee;
+    }
+    
+    .nav {
+        font-size:10px;
+        letter-spacing:2px;
+        text-align:center;
+        margin-bottom:10px;
+    }
+    
+    .nav a, a {
+        color:#ccc;
+        text-decoration:none;
+        border-bottom:1px solid #555;
+        transition:0.5s all;
+    }
+    
+    h2 {
+        text-align:center;
+        font-weight:300;
+        letter-spacing:2px;
+        margin-top:20px;
+        margin-bottom:5px;
+        color:#eee;
+    }
+    
+    /* expanded buttons */
+   /* .sidebar .button {
+        display:block;
+        background:none;
+        border:1px solid #555;
+        margin:6px auto;
+        color:#ccc;
+        width:100px;
+        transition:0.5s all;
+    }
+    
+    
+    /* condensed buttons */
+    .sidebar .button {
+        display:inline;
+        background:none;
+        border:1px solid #555;
+        margin:3px 0px;
+        color:#ccc;
+        width:75px;
+        transition:0.5s all;
+    } 
+    
+    .button-group {
+        width:200px;
+        margin:0 auto;
+        text-align:center;
+    }
+    
+    .sidebar .button:hover {
+        background-color:#555;
+        border:#777 1px solid;
+        color:#eee;
+    }
+    
+   .button.ischecked {
+        background-color:#555!important;
+        border:#777 1px solid!important;
+        color:#eee!important;
+    }
+    
+    .header {
+        background-color:#333;
+        margin:0;
+        padding:0;
+        height:100px;
+    }
+    
+    .header h1 {
+        margin:0;
+        padding-top:25px;
+        padding-left:200px;
+        font-size:40px;
+    }
+    
+</style>
+</head>
+<div class='sidebar'>
+        
+        <h1>Muselist</h1> <!-- Page title goes here. -->
+        
+        <div class="nav">
+        <!-- Navigation links, change them to whatever you want. -->
+            <a href="/forceverses">Force User Verses</a>
+            <a href="/govverses">Officials Verses</a>
+            <a href="/crimverses">Miscreant Verses</a>
+        </div>
+        
+        <div class="desc">
+            <p>Mains and secondary are default. Requests need plotting.</p>
+        </div>
+        
+        <!--
+        
+Okay, changing the filters is potentially the most difficult part. I'll try to explain how you do it.
+
+*** ADD A NEW OPTION TO AN EXISTING GROUP:
+
+    Let's say you want to stick to my defaults, but want to add a "ghost" option for species. Go down to the button group you want to add an option to, in this case species. It looks like this: 
+    
+    --
+    
+    <h2>Species</h2>
+    <div class="button-group" data-filter-group="species">
+        <button data-filter="" class="button ischecked">any</button>
+        <button data-filter=".human" class="button">human</button>
+        <button data-filter=".werewolf" class="button">werewolf</button>
+        <button data-filter=".vampire" class="button">vampire</button>
+    </div>
+    
+    --
+    
+    To add an option, start by copying one of the buttons and pasting it on the line below. We'll copy the vampire one. Here's what it looks like now.
+    
+    --
+    
+    <h2>Species</h2>
+    <div class="button-group" data-filter-group="species">
+        <button data-filter="" class="button ischecked">any</button>
+        <button data-filter=".human" class="button">human</button>
+        <button data-filter=".werewolf" class="button">werewolf</button>
+        <button data-filter=".vampire" class="button">vampire</button>
+        <button data-filter=".vampire" class="button">vampire</button>
+    </div>
+    
+    --
+    
+    But we don't want two vampire ones, so we'll change the values. Here's what it will look like after the values are changed, compared to the original:
+    
+    --
+    
+    Original: <button data-filter=".vampire" class="button">vampire</button>
+    New version: <button data-filter=".ghost" class="button">ghost</button>
+    --
+    
+    And that's it! Everything should work. 
+    
+    
+*** REMOVE AN OPTION FROM AN EXISTING GROUP
+
+    This one's simple. Just find the code for the button that you want to remove and delete that one line. You're done!
+    
+
+*** ADD A NEW FILTER GROUP
+
+    For this example, we'll pretend you want to add a filter group for the character's grade (freshman, sophomore, junior, or senior). First, copy and paste any of the filter groups, starting at the <h2> tag and ending at the </div>. Here's what we'll start with:
+    
+    --
+    
+    <h2>Species</h2>
+        <div class="button-group" data-filter-group="species">
+            <button data-filter="" class="button ischecked">any</button>
+            <button data-filter=".human" class="button">human</button>
+            <button data-filter=".werewolf" class="button">werewolf</button>
+            <button data-filter=".vampire" class="button">vampire</button>
+        </div>
+    
+    --
+    
+    Change the text between the <h2> tags to the title of your filter, in this case "Grade."
+    
+    Next, we need to give the filter group a new official name. In the div tag, the one that looks like this:
+    
+        <div class="button-group" data-filter-group="species">
+    
+    Replace the content of data-filter-group="___" with whatever you want to call your group. In this case, grade works.
+    
+    Don't mess with the first button! Having an "any" button is important, we don't want to remove it. If you really want to call it something else youc an change the "any" text to something else like "all", but leave all the attributes within the tag the same.
+    
+    Now modify the other buttons to create your new options. You'll need to change the data-filter attribute (keep the period at the beginning, that's crucial!) and the label that's between the <button></button> tags. 
+    
+    For the data-filter, do not have any spaces. If you have multiple words, seperate them by dashes. Add and remove options as necessary. 
+    
+    In the end, it should look like this:
+    
+    --
+    
+    <h2>Grade</h2>
+        <div class="button-group" data-filter-group="grade">
+            <button data-filter="" class="button ischecked">any</button>
+            <button data-filter=".freshman" class="button">freshman</button>
+            <button data-filter=".sophomore" class="button">sophomore</button>
+            <button data-filter=".junior" class="button">junior</button>
+            <button data-filter=".senior" class="button">senior</button>
+        </div>
+    
+    --
+    
+    And you're done! Make sure you add the new data filters to the class section of your character entries so the sorting will work. How to do that is covered further down.
+    
+
+*** REMOVE A FILTER GROUP
+
+    To remove a filter group, locate the one you want to remove in the code. Delete everything starting from the <h2> tag and ending at the </div> tag.
+        
+        -->
+        
+        <div class="filters">
+            <h2>Status</h2>
+            <div class="button-group" data-filter-group="status">
+                <button data-filter="" class="button ischecked">All</button>
+                <button data-filter=".main" class="button">Main</button>
+                <button data-filter=".secondary" class="button">Secondary</button>
+                <button data-filter=".request" class="button">Request</button>
+            </div>
+            
+        <h2>Affiliation</h2>
+        <div class="button-group" data-filter-group="affiliation">
+            <button data-filter="" class="button ischecked">Any</button>
+               <button data-filter=".clone" class="button">Clone</button>
+               <button data-filter=".jedi" class="button">Jedi</button>
+               <button data-filter=".sith" class="button">Sith</button>
+               <button data-filter=".republic" class="button">Republic</button>
+               <button data-filter=".separatist" class="button">Separatist</button>
+               <button data-filter=".empire" class="button">Empire</button>
+               <button data-filter=".criminal" class="button">Criminal</button>
+               <button data-filter=".other" class="button">Other</button>
+            </div>
+            
+            <h2>Canon</h2>
+        <div class="button-group" data-filter-group="Canon">
+            <button data-filter="" class="button ischecked">Any</button>
+            <button data-filter=".canon" class="button">Canon</button>
+            <button data-filter=".divergent" class="button">Divergent</button>
+            <button data-filter=".eu" class="button">EU</button>
+            <button data-filter=".combo" class="button">Combo</button>
+            <button data-filter=".oc" class="button">OC</button>
+        </div>
+</div>
+    </div>
+ 
+<div id="footer">
+ 
+    <div class="footer">
+ 
+        <div class="title">
+ 
+        Muselist
+ 
+        </div>
+ 
+    <p>
+ 
+<a href="/">return</a> • <!-- you can put more links here -->
+<a href="https://ttenvely.tumblr.com/">theme credit</a><!-- DO NOT REMOVE -->
+ 
+    </div>
+ 
+</div>
+ 
+ 
+<div id="container">
+ 
+ 
+ 
+<!-- START OF MUSE copy & paste from here to END OF MUSE -->
+<div class="box">
+    <div class="chara request republic oc">
+    
+        <div class="fc">
+ 
+            <!-- image size is 200x300 but should resize to fit -->    
+            <img src="https://i.redd.it/m11jluso7wv31.jpg">
+ 
+        </div>
+    
+ 
+        <div class="muse-name">
+ 
+            Commander Cody
+ 
+        </div>
+ 
+        <div class="fc-name">
+ 
+            Temuera Morrison
+ 
+        </div>
+ 
+        <div class="muse-bio">
+    
+        <p>"There's always a way."</p>
+        <p>Mainly Headcanon, new canon influence
+        <p>
+        <a href="/tagged/ic: Personal For Us (Cody)">In Character</a> | 
+        <a href="/tagged/ch: Unwavering Loyalty (Cody)">Character Tag</a> | 
+        <a href="/tagged/musing: There Is Always A Way (Cody)">Musings</a> | 
+        <a href="/tagged/Headcanons: Cody">Headcanons</a> | 
+        <a href="/tagged/aesthetic: A Weary Sun Rises (Cody)">Aesthetic</a></p>
+ 
+        Lorem ipsum dolor sit amet, consectetuer ADIPISCING ELIT. Aliquam nisi lorem, pulvinar id, commodo feugiat, vehicula et, mauris. Aliquam mattis porta urna. Maecenas dui neque, rhoncus sed, vehicula vitae, auctor at, nisi. Aenean id massa ut lacus molestie porta. Curabitur sit amet quam id libero suscipit venenatis.<p>
+ 
+        Lorem ipsum dolor sit amet, consectetuer ADIPISCING ELIT. Aliquam nisi lorem, pulvinar id, commodo feugiat, vehicula et, mauris. Aliquam mattis porta urna. Maecenas dui neque, rhoncus sed, vehicula vitae, auctor at, nisi. Aenean id massa ut lacus molestie porta. Curabitur sit amet quam id libero suscipit venenatis.
+ 
+        </div>
+ 
+        <div class="muse-age">
+ 
+            10
+ 
+        </div>
+ 
+        <div class="stat">
+ 
+            <b>Species</b><br>
+            Clone Trooper
+ 
+        </div>
+    </div>
+ 
+</div>
+<!-- END OF MUSE -->
+
+<!-- START OF MUSE copy & paste from here to END OF MUSE -->
+<div class="box">
+ 
+    <div class="fc">
+ 
+        <!-- image size is 200x300 but should resize to fit -->    
+        <img src="https://via.placeholder.com/200x300">
+ 
+    </div>
+ 
+    <div class="muse-name">
+ 
+        muse name
+ 
+    </div>
+ 
+    <div class="fc-name">
+ 
+        faceclaim name
+ 
+    </div>
+ 
+    <div class="muse-bio">
+ 
+        Lorem ipsum dolor sit amet, consectetuer ADIPISCING ELIT. Aliquam nisi lorem, pulvinar id, commodo feugiat, vehicula et, mauris. Aliquam mattis porta urna. Maecenas dui neque, rhoncus sed, vehicula vitae, auctor at, nisi. Aenean id massa ut lacus molestie porta. Curabitur sit amet quam id libero suscipit venenatis.<p>
+ 
+        Lorem ipsum dolor sit amet, consectetuer ADIPISCING ELIT. Aliquam nisi lorem, pulvinar id, commodo feugiat, vehicula et, mauris. Aliquam mattis porta urna. Maecenas dui neque, rhoncus sed, vehicula vitae, auctor at, nisi. Aenean id massa ut lacus molestie porta. Curabitur sit amet quam id libero suscipit venenatis.
+ 
+    </div>
+ 
+    <div class="muse-age">
+ 
+        00
+ 
+    </div>
+ 
+    <div class="stat">
+ 
+        <b>occupation</b><br>
+        occupation
+ 
+    </div>
+ 
+</div>
+<!-- END OF MUSE -->
+ 
+<!-- end container DO NOT DELETE BEYOND THIS LINE -->
+</div> 
+</div> 
+ 
+</body>
+</html>
