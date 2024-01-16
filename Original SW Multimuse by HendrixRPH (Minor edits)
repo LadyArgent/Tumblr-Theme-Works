@@ -1,0 +1,1047 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<html>
+
+<!--
+
+    Hey friends! I'm HendrixRPH and this is my first character page theme. Don't claim this as your own, don't remove the credit, and don't use as a base, please!
+    
+    On the other hand, if you want to steal the code that lets you filter by multiple criteria, go ahead. I stole it from the Isotope documentation anyway. I would recommend you look at it yourself before using so that you get the HTML structure right. Here is where I got it from: http://isotope.metafizzy.co/filtering.html#combination-filters
+    
+    That said, special thanks to Metafizzy for this awesome library!
+
+-->
+
+<head>
+<title>Muse List</title>
+
+<link href='http://fonts.googleapis.com/css?family=Khula:400,300,700' rel='stylesheet' type='text/css'>
+
+<style>
+    ::-webkit-scrollbar {background-color:#888; height:4px; width:6px}
+    ::-webkit-scrollbar-thumb:vertical {background-color:#333; height:50px}
+    ::-webkit-scrollbar-thumb:horizontal {background-color:#333; height:8px!important}
+    
+    body, html {
+        height:100%;
+        margin:0;
+        padding:0;
+        font-family:"Khula", Helvetica, Arial, sans-serif;
+        background-color:#213f52;
+        overflow:hidden;
+    }
+    
+    .sidebar {
+        float:left;
+        width:275px;
+        background:#213f52;
+        height:100%;
+        padding:0;
+        font-family:"Khula", Helvetica, Arial, sans-serif;
+        overflow:hidden;
+    }
+    
+    .sidebar::after {
+        clear:both;
+    }
+    
+    h1 {
+        text-transform:uppercase;
+        text-align:center;
+        padding: 10px 20px;
+        padding-bottom:0px;
+        margin:10px 0px;
+        z-index:0;
+        position:relative;
+        letter-spacing:1px;
+        font-weight:300;
+        color:#eee;
+    }
+    
+    .nav {
+        font-size:10px;
+        letter-spacing:2px;
+        text-align:center;
+        margin-bottom:10px;
+    }
+    
+    .nav a, a {
+        color:#ccc;
+        text-decoration:none;
+        border-bottom:1px solid #555;
+        transition:0.5s all;
+    }
+    
+    .nav a:hover, a:hover {
+        color:#fff;
+        letter-spacing:3px;
+    }
+    
+    .nav a {
+        padding:0 5px;
+        border-bottom:0px;
+    }
+    
+    .desc {
+        padding: 0px 15px;
+        text-align:center;
+        font-size:11px;
+        margin:0 10px;
+        border:1px solid #555;
+        letter-spacing:1px;
+        font-weight:300;
+        color:#ddd;
+    }
+    
+    h2 {
+        text-align:center;
+        font-weight:300;
+        letter-spacing:2px;
+        margin-top:20px;
+        margin-bottom:5px;
+        color:#eee;
+    }
+    
+    /* expanded buttons */
+   /* .sidebar .button {
+        display:block;
+        background:none;
+        border:1px solid #555;
+        margin:6px auto;
+        color:#ccc;
+        width:100px;
+        transition:0.5s all;
+    }
+    
+    
+    /* condensed buttons */
+    .sidebar .button {
+        display:inline;
+        background:none;
+        border:1px solid #555;
+        margin:3px 0px;
+        color:#ccc;
+        width:75px;
+        transition:0.5s all;
+    } 
+    
+    .button-group {
+        width:200px;
+        margin:0 auto;
+        text-align:center;
+    }
+    
+    .sidebar .button:hover {
+        background-color:#555;
+        border:#777 1px solid;
+        color:#eee;
+    }
+    
+   .button.ischecked {
+        background-color:#555!important;
+        border:#777 1px solid!important;
+        color:#eee!important;
+    }
+    
+    .wrapper {
+        background-color:#213f52; /*The bg of the chara spots!*/
+        max-height:100%;
+        margin:0;
+        padding:0;
+        margin-left:300px;
+        overflow-y:scroll;
+    }
+    
+    .wrapper:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    
+    .header {
+        background-color:#333;
+        margin:0;
+        padding:0;
+        height:100px;
+    }
+    
+    .header h1 {
+        margin:0;
+        padding-top:25px;
+        padding-left:200px;
+        font-size:40px;
+    }
+    
+    .chara {
+        width:200px;
+        height:250px;
+        background-color:#888;
+        float:left;
+        margin:10px 15px;
+        padding:0;
+        z-index:0;
+        position:relative;
+        overflow:hidden;
+    }
+    
+    .charaimg {
+        width:200px;
+        z-index:1;
+        position:relative;
+    }
+    
+    .charatitle {
+        height:35px;
+        line-height:35px;
+        position:absolute;
+        bottom:0;
+        background-color:#333;
+        width:180px;
+        padding:10px;
+        color:#fff;
+        opacity:0.8;
+        text-align:center;
+        z-index:2;
+    }
+    
+    .charatitle span {
+        margin:0;
+        padding:0;
+        display:inline-block;
+        vertical-align:middle;
+        line-height:1.5em;
+        font-size:10px;
+        letter-spacing:1px;
+        font-weight:300;
+        
+    }
+    
+    .charatitle span p {
+        margin:0;
+        padding:0;
+    }
+    
+    .charahover {
+        position:absolute;
+        z-index:5;
+        background-color:#333;
+        width:190px;
+        height:240px;
+        opacity:0;
+        transition:1s opacity;
+        padding:5px 0;
+        padding-right:10px;
+        overflow:hidden;
+    }
+    
+    .charahover:hover {
+        opacity:0.9;
+        overflow-y:scroll;
+    }
+    
+    .charahover p {
+        line-height:1.35em;
+        font-size:10px;
+        letter-spacing:1px;
+        font-weight:300;
+        padding:2px 8px;
+        color:#fff;
+        margin:0 3px;
+        text-align: center;
+    }
+    
+    .charahover ul, .charahover ol {
+        line-height:1.35em;
+        font-size:10px;
+        letter-spacing:1px;
+        font-weight:300;
+        color:#fff;
+        padding-left:28px;
+    }
+    
+    .credit {
+        position:absolute;
+        margin:7px 13px;
+        padding:3px 5px;
+        font-size:8px;
+        bottom:0;
+        right:0;
+        background-color:#888;
+        color:#fff;
+        opacity:0.5;
+        transition:0.75s all;
+    }
+    
+    .credit:hover {
+        opacity:0.8;
+        letter-spacing:normal;
+    }
+    
+
+
+    
+</style>
+</head>
+
+<body>
+    
+    <div class='sidebar'>
+        
+        <h1>Muselist</h1> <!-- Page title goes here. -->
+        
+        <div class="nav">
+        <!-- Navigation links, change them to whatever you want. -->
+            <a href="/forceverses">Force User Verses</a>
+            <a href="/govverses">Officials Verses</a>
+            <a href="/crimverses">Miscreant Verses</a>
+        </div>
+        
+        <div class="desc">
+            <p>Mains and secondary are default. Requests need plotting.</p>
+        </div>
+        
+        <!--
+        
+Okay, changing the filters is potentially the most difficult part. I'll try to explain how you do it.
+
+*** ADD A NEW OPTION TO AN EXISTING GROUP:
+
+    Let's say you want to stick to my defaults, but want to add a "ghost" option for species. Go down to the button group you want to add an option to, in this case species. It looks like this: 
+    
+    --
+    
+    <h2>Species</h2>
+    <div class="button-group" data-filter-group="species">
+        <button data-filter="" class="button ischecked">any</button>
+        <button data-filter=".human" class="button">human</button>
+        <button data-filter=".werewolf" class="button">werewolf</button>
+        <button data-filter=".vampire" class="button">vampire</button>
+    </div>
+    
+    --
+    
+    To add an option, start by copying one of the buttons and pasting it on the line below. We'll copy the vampire one. Here's what it looks like now.
+    
+    --
+    
+    <h2>Species</h2>
+    <div class="button-group" data-filter-group="species">
+        <button data-filter="" class="button ischecked">any</button>
+        <button data-filter=".human" class="button">human</button>
+        <button data-filter=".werewolf" class="button">werewolf</button>
+        <button data-filter=".vampire" class="button">vampire</button>
+        <button data-filter=".vampire" class="button">vampire</button>
+    </div>
+    
+    --
+    
+    But we don't want two vampire ones, so we'll change the values. Here's what it will look like after the values are changed, compared to the original:
+    
+    --
+    
+    Original: <button data-filter=".vampire" class="button">vampire</button>
+    New version: <button data-filter=".ghost" class="button">ghost</button>
+    --
+    
+    And that's it! Everything should work. 
+    
+    
+*** REMOVE AN OPTION FROM AN EXISTING GROUP
+
+    This one's simple. Just find the code for the button that you want to remove and delete that one line. You're done!
+    
+
+*** ADD A NEW FILTER GROUP
+
+    For this example, we'll pretend you want to add a filter group for the character's grade (freshman, sophomore, junior, or senior). First, copy and paste any of the filter groups, starting at the <h2> tag and ending at the </div>. Here's what we'll start with:
+    
+    --
+    
+    <h2>Species</h2>
+        <div class="button-group" data-filter-group="species">
+            <button data-filter="" class="button ischecked">any</button>
+            <button data-filter=".human" class="button">human</button>
+            <button data-filter=".werewolf" class="button">werewolf</button>
+            <button data-filter=".vampire" class="button">vampire</button>
+        </div>
+    
+    --
+    
+    Change the text between the <h2> tags to the title of your filter, in this case "Grade."
+    
+    Next, we need to give the filter group a new official name. In the div tag, the one that looks like this:
+    
+        <div class="button-group" data-filter-group="species">
+    
+    Replace the content of data-filter-group="___" with whatever you want to call your group. In this case, grade works.
+    
+    Don't mess with the first button! Having an "any" button is important, we don't want to remove it. If you really want to call it something else youc an change the "any" text to something else like "all", but leave all the attributes within the tag the same.
+    
+    Now modify the other buttons to create your new options. You'll need to change the data-filter attribute (keep the period at the beginning, that's crucial!) and the label that's between the <button></button> tags. 
+    
+    For the data-filter, do not have any spaces. If you have multiple words, seperate them by dashes. Add and remove options as necessary. 
+    
+    In the end, it should look like this:
+    
+    --
+    
+    <h2>Grade</h2>
+        <div class="button-group" data-filter-group="grade">
+            <button data-filter="" class="button ischecked">any</button>
+            <button data-filter=".freshman" class="button">freshman</button>
+            <button data-filter=".sophomore" class="button">sophomore</button>
+            <button data-filter=".junior" class="button">junior</button>
+            <button data-filter=".senior" class="button">senior</button>
+        </div>
+    
+    --
+    
+    And you're done! Make sure you add the new data filters to the class section of your character entries so the sorting will work. How to do that is covered further down.
+    
+
+*** REMOVE A FILTER GROUP
+
+    To remove a filter group, locate the one you want to remove in the code. Delete everything starting from the <h2> tag and ending at the </div> tag.
+        
+        -->
+        
+        <div class="filters">
+            <h2>Status</h2>
+            <div class="button-group" data-filter-group="status">
+                <button data-filter="" class="button ischecked">All</button>
+                <button data-filter=".main" class="button">Main</button>
+                <button data-filter=".secondary" class="button">Secondary</button>
+                <button data-filter=".request" class="button">Request</button>
+            </div>
+            
+        <h2>Affiliation</h2>
+        <div class="button-group" data-filter-group="affiliation">
+            <button data-filter="" class="button ischecked">Any</button>
+               <button data-filter=".clone" class="button">Clone</button>
+               <button data-filter=".jedi" class="button">Jedi</button>
+               <button data-filter=".sith" class="button">Sith</button>
+               <button data-filter=".republic" class="button">Republic</button>
+               <button data-filter=".separatist" class="button">Separatist</button>
+               <button data-filter=".empire" class="button">Empire</button>
+               <button data-filter=".criminal" class="button">Criminal</button>
+               <button data-filter=".other" class="button">Other</button>
+            </div>
+            
+            <h2>Canon</h2>
+        <div class="button-group" data-filter-group="Canon">
+            <button data-filter="" class="button ischecked">Any</button>
+            <button data-filter=".canon" class="button">Canon</button>
+            <button data-filter=".divergent" class="button">Divergent</button>
+            <button data-filter=".eu" class="button">EU</button>
+            <button data-filter=".combo" class="button">Combo</button>
+            <button data-filter=".oc" class="button">OC</button>
+        </div>
+</div>
+    </div>
+    
+    <div class="wrapper"> <!-- All of your character boxes should go in here. -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara request republic oc">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Annubin Gestahl</p>
+                <p><i>Senator of Tepasi</i></p>
+                <p>FC: Elton John
+            </span></div>
+            <div class="charahover">
+                 <p>"I'm an elected official with a flair for the fun things in life. I serve my people, and their interests, before anything else."</p>
+                <p>OC
+                <p><a href="/tagged/ch: Flatter Always (Annubin Gestahl)">Character Tag</a> <a href="/tagged/musing: My People Need A Leader (Annubin)">Musings</a> <a href="/tagged/Headcanons: Annubin">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>Born on Tepasi to a well-connected, if subtly so, family, Annubin (Nubin to his friends) quickly decided life serving his family's gains was not his fate. Joining the Tepasi Intelligence Network at the age of 18, he spent nearly twelve years doing undercover jobs on-planet and off, and another eight years training new spies. By the age of 43 he had amassed enough clout within the government to find supporters for his run for Senate, and was elected by a landslide.</p>
+                <p>Nubin serves the interests of his people before anything else, and so worked with Bail Organa and Padme Amidala (among others) to oppose Chancellor Palpatine's orders, the Clone Wars in general, and the treatment of the clones themselves. During the Galactic Civil War, he aided the Rebellion until the dismantling of the Imperial Senate, whereupon he took up arms against the Empire. After the reformation of the Republic, he was once again elected to the Senate, where he helped the Alliance wherever possible.
+            </div>
+            <img src="https://68.media.tumblr.com/31acf1f0f1c533c47b305c3e1a9071f8/tumblr_inline_oql6bnZ0TD1uzh0ol_540.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara request criminal eu combo">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Arla Fett</p>
+                <p><i>Princess of Death</i></p>
+                <p>FC: Charlize Theron
+            </span></div>
+            <div class="charahover">
+                 <p>"I hate who I've become."</p>
+                <p>EU and Headcanon
+                <p>Trigger Warning: Sexual Abuse, Abuse, Brainwashing, Drugs & Alcohol
+                <p><a href="/tagged/ch: Could You Stand Being Me? (Arla Fett)">Character Tag</a> <a href="/tagged/musing: I Hate What I've Become (Arla)">Musings</a> <a href="/tagged/Headcanons: Arla">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>Elder sister to Jango Fett, Arla was captured by Death Watch in her early teens and used by the organization as a child soldier and assassin.  The organization also used her as entertainment for some of its members, and Arla grew up feeling more like a tool to be wielded than a person.</p>
+                <p>Eventually she broke away from Death Watch, before being captured by the Republic and put in prison for her crimes, where she was put in a mental ward and slowly spiraled downward.
+            </div>
+            <img src="https://78.media.tumblr.com/9f1c0f2d2387b7c42027c85b90ffae61/tumblr_inline_p4c6caiEcp1uzh0ol_540.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara request criminal eu">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Aruk the Great</p>
+                <p>Besadii Clan Leader</p>
+                <p>FC: ???
+            </span></div>
+            <div class="charahover">
+                <p>"Diplomacy was never your strong suit, I know."</p>
+                <p>EU Comics and Headcanon
+                <p><a href="/tagged/ch: Giant Among Hutts (Aruk the Hutt)">Character Tag</a> <a href="/tagged/musing: Slavery is My Business (Aruk)">Musings</a> <a href="/tagged/Headcanons: Aruk">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>A Hutt Agen Kolar has met on several occasions, Aruk runs a fairly legitimate business on Nar Shaddaa; his cantinas and shops are generally as above-board as it can get on the moon, and if not safe, are at least unbiased in their suspicions of patrons (Jedi included). He’s been around the block long enough to know that pissing off Jedi isn’t a good business practice…and he likes to keep his relations with them as positive as he can, even to the detriment of his familial relations.</p>
+            </div>
+            <img src="https://68.media.tumblr.com/3084d48df33779ee34de8c3144eed27f/tumblr_inline_otkvyk6csO1uzh0ol_540.png" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara main jedi republic combo divergent">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Bant Eerin</p>
+                <p><i>Gentle Healer</i></p>
+                <p>FC: ...fish
+            </span></div>
+            <div class="charahover">
+                 <p>"There's no need to apologize."</p>
+                <p>EU Novels and Comics, Divergent death
+                <p><a href="/tagged/ch: No Need to Apologize (Bant Eerin)">Character Tag</a> <a href="/tagged/musing: Healing is My Calling (Bant)">Musings</a> <a href="/tagged/Headcanons: Bant">Headcanons</a> <a href="/tagged/aesthetic: Eyes Like Quicksilver (Bant)">Aesthetic</a></p>
+                <p>Bant Eerin was a Mon Calamari Jedi Healer during the years leading up to the Clone Wars.  She was a close friend of Siri Tachi and Obi-Wan Kenobi.  Her gentle, even-keeled nature saw her through quite a few crises, and her skill as a fighter saw her safely out of a few more.  Although widely believed to have been killed during the Jedi Purge of Order 66 at the end of the CLone Wars, Bant escaped the Temple and out into the Outer Rim, where she plied her services as a Healer for the betterment of communities there.</p>
+                <p>WIP, will be finished later</p>
+            </div>
+            <img src="https://vignette.wikia.nocookie.net/reentry/images/b/bc/Bant.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara secondary criminal divergent">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Boba Fett</p>
+                <p><i>The Hunter</i></p>
+                <p>FC: Temuera Morrison
+            </span></div>
+            <div class="charahover">
+                 <p>"As you wish."</p>
+                <p>Canon Divergent
+                <p><a href="/tagged/ch: As You Wish (Boba)">Character Tag</a> <a href="/tagged/musing: My Skin Is A Library of Scars (Boba)">Musings</a> <a href="/tagged/Headcanons: Boba">Headcanons</a> <a href="/tagged/aesthetic: Library of Scars (Boba)">Aesthetic</a></p>
+                <p>The cloned son of infamous bounty hunter Jango Fett, Boba grew up on the water world of Kamino in Tipoca City. While his genetically modified clone brothers were raised as soldiers, Boba was raised to be Fett's son and eventual replacement, if he wanted the job.</p>
+                <p>After his father's death at Geonosis, Boba sought revenge on the Jedi Order, and Mace WIndu in particular. After a failed attempt that resulted in jail time, he eventually started to do small jobs for Hondo Ohnaka and other criminals, working outside the Bounty Hunter's Guild.</p>
+            </div>
+            <img src="https://upload.wikimedia.org/wikipedia/en/3/3e/FettbobaJB.png" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+                <!-- BEGIN COPY PASTE -->
+        <div class="chara request clone oc">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Commander Caduceus</p>
+                <p><i>Cad</i></p>
+                <p>FC: N/A
+            </span></div>
+            <div class="charahover">
+                 <p>"I'll let you suffer for your stupidity."</p>
+                <p>OC
+                <p><a href="/tagged/ch: I Need More Caf (Cad)">Character Tag</a> <a href="/tagged/musing: Suffer For Your Stupidity (Cad)">Musings</a> <a href="/tagged/Headcanons: Cad">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>Originally slated for a command position, Cad’s eventual knack for the bare minimum medicine training given slotted him in for further training, until eventually he was made a medic. Early on he discovered Cody had a knack for getting into trouble and getting hurt, and eventually Cad made it his personal mission to make sure his young commander came back from an exercise in as good a shape as possible. Eventually this extended to Obi-Wan as well.</p>
+                <p>Cad is gruff, no-nonsense, and eternally exasperated with his commanders, but he puts up with them out of genuine care. He’s one of the better medics in the GAR, which is quite fortunate for one Jedi and one Clone Marshal.</p>
+            </div>
+            <img src="https://68.media.tumblr.com/d6a6129f0bebcb93d3cedc3ffa07a9c2/tumblr_inline_otcwvlR2No1uzh0ol_540.png" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+         <!-- BEGIN COPY PASTE -->
+        <div class="chara secondary separatist oc">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Calista Nu-Dooku</p>
+                <p><i>Countess of Serenno</i></p>
+                <p>FC: Molly Quinn</p>
+            </span></div>
+            <div class="charahover">
+                <p>"It all seems very simple. That's the problem, really. Negotiation is an art, gentlemen, and compromise the artist's paint. The painting will never be finished if he simply ran the brush over the canvas."</p>
+                <p>OC
+                <p><a href="/tagged/ch: Negotiation is an Art (Calista Nu-Dooku)">Character Tag</a> <a href="/tagged/musing: I Was Born of Grace (Calista)">Musings</a> <a href="/tagged/Headcanons: Calista">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>Born to Jocasta Nu and and Knight Dooku in the year (btwn 67 and 72 BBY), Calista was a mistake gone right. Her first concrete memories are of her family on Serenno, and spending long hours with her parents.</p>
+                <p>Strongly connected to the Living Force, Calista always had a knack for dealing with animals, and eventually with understanding her fellow humanoids, although in her early years she avoided most people. Gifted with her father's training and her mother's practicality, the girl became a decent fighter with lightsaber and blaster, although she leaned more towards the lightsaber in skill. Eventually, as she grew older, her dislike for humanoids faded, and her father's silver tongue made itself apparent in her demeanor.
+                <br>By the time Calista was twenty-five years old, she had become an official diplomat for the planet of Serenno, and had been offered the job of an aide to the Senator. She chose the former, and worked to advance the interests of the planet in the galactic community, with words where possible, and force where necessary.
+            </div>
+            <img src="https://68.media.tumblr.com/c8bf847846a098b24a0d388b8bed3382/tumblr_inline_opuriuQOO21uzh0ol_540.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara main clone republic divergent">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Commander Cody</p>
+                <p><i>Commander</i></p>
+                <p>FC: TCW/Temuera Morrison
+            </span></div>
+            <div class="charahover">
+                 <p>There's always a way."</p>
+                <p>Mainly Headcanon with TCW
+                <p><a href="/tagged/ch: Unwavering Loyalty (Cody)">Character Tag</a> <a href="/tagged/musing: There Is Always A Way (Cody)">Musings</a> <a href="/tagged/Headcanons: Cody">Headcanons</a> <a href="/tagged/aesthetic: A Weary Sun Rises (Cody)">Aesthetic</a></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum metus, placerat eget turpis vel, commodo ullamcorper velit. Cras elementum, massa id commodo tincidunt, augue ante dictum arcu, in iaculis ligula dolor non lacus. Cras vitae quam ac libero eleifend maximus vitae ac lacus. Fusce id augue sapien. In nec posuere ligula. Nam pulvinar sem semper mi aliquam cursus. Aliquam nulla turpis, egestas non eros in, luctus semper augue. Fusce facilisis erat ante, lacinia elementum turpis porta ac.</p>
+                <p>Quisque sagittis in augue sit amet vestibulum. Suspendisse quis elementum dolor. Proin molestie rutrum elit, a blandit diam dictum sit amet. Curabitur sed lobortis nulla. Pellentesque vitae molestie magna, sed gravida arcu. Vivamus sit amet justo id nisi pretium placerat vel eget ligula. Donec ac turpis ex. Nulla quis pulvinar leo.</p>
+            </div>
+            <img src="https://i.redd.it/m11jluso7wv31.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara main jedi combo divergent">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Depa Billaba</p>
+                <p><i>Master</i></p>
+                <p>FC: Freida Pinto
+            </span></div>
+            <div class="charahover">
+                 <p>"I see my little strategist has been thinking again."</p>
+                <p>Mix EU and New Canon, Divergent
+                <p><a href="/tagged/ch: We All Must Find A Path (Depa Billaba)">Character Tag</a> <a href="/tagged/musing: I've Gone Sane (Depa)">Musings</a> <a href="/tagged/Headcanons: Depa">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>Rescued from a pirate vessel in her early years by Mace Windu, Depa Billaba was a studious, dedicated Jedi youngling, interested more in diplomacy than in her lightsaber. As she came of age to be selected as a padawan, it was her rescuer who took her on, and treated her more as a daughter than an apprentice. Taught the highly risky version of Form VII that Windu and Sora Bulq created, Vaapad, Depa eventually came to surpass Windu's swrdsmanship, though she prided herself on using words before all else.</p>
+                <p>With the outbreak of the Clone Wars, Depa was sent to Windu's homeplanet of Haruun Kaal, where she committed and saw horrors enough to drive her mad. She carved out the symbol of Great Enlightenment she had attained on her homeworld in her shame, and nearly killed her old Master when he came to fetch her. Dropping into a coma from her injuries, after awking she was put on trial for war crimes, and found innocent due to extenuating circumstances. It was at this point she took on a young Caleb Dume as her apprentice, a youngling she ahd watched grow and taken an interest in.</p>
+            </div>
+            <img src="https://68.media.tumblr.com/2621640de952b06cc535c14ef67841a9/tumblr_inline_optynmBX5x1uzh0ol_540.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara request clone oc">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Captain Evolution</p>
+                <p><i>Evo</i></p>
+                <p>FC: N/A
+            </span></div>
+            <div class="charahover">
+                 <p>"Fascinating."</p>
+                <p>Book and Headcanon
+                <p><a href="/tagged/ch: Scientifically Astounding (Evo)">Character Tag</a> <a href="/tagged/musing: It's a Marvel (Evo)">Musings</a> <a href="/tagged/Headcanons: Evo">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>Clone captain of Wraith Squad, Evo is the man in charge when the commander and the General are away. A lot less friendly than some brothers, with a penchant for cold-hard facts that can leave him a bit low on friends.</p>
+            </div>
+            <img src="https://68.media.tumblr.com/0e33cdda90549041e2b461602a44b01d/tumblr_inline_opur2w6HiR1uzh0ol_540.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara secondary clone empire divergent">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Commander Grey</p>
+                <p>FC: N/A
+            </span></div>
+            <div class="charahover">
+                <p>"I'll never fail her again.</p>
+                <p>Comic and Headcanon
+                <p><a href="/tagged/ch: It Was Never Her Fault (Grey)">Character Tag</a> <a href="/tagged/musing: Devotion Isn't Enough (Grey)">Musings</a> <a href="/tagged/Headcanons: Grey">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>Commander of the 94th battalion under Jedi General Depa Billaba, Grey saw a lot of action. First in the jungles of Haruun Kal, watching his Jedi slip further and further into Darkness until even he could barely see her. With the decimation of his command, Grey found himself waiting on his Jedi to awake, rebuilding his battalion with too many shinies. By the time Depa brought her padawan back with her, they had mostly recovered their losses...of his command crew, only three survived. But it was better than nothing.
+            </div>
+            <img src="https://78.media.tumblr.com/4e6fe80fe53b7f0f37777c397389c1a6/tumblr_inline_p4c67bpeDO1uzh0ol_540.png" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara main criminal divergent eu combo">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Jango Fett</p>
+                <p><i>The Soldier</i></p>
+                <p>FC: Temuera Morrison
+            </span></div>
+            <div class="charahover">
+                 <p>"I'm just a simple man, trying to make my way in the universe."</p>
+                <p>Canon Divergent
+                <p><a href="/tagged/ch: Simple Man (Jango)">Character Tag</a> <a href="/tagged/musing: Mandalorian To The Bone (Jango)">Musings</a> <a href="/tagged/Headcanons: Jango">Headcanons</a> <a href="/tagged/aesthetic: Quick Draw">Aesthetic</a></p>
+                <p>Jango was born on Concord Dawn, in the Mandalorian system. After Death Watch killed his family, he was taken in by the leader of the True Mandalorians, and raised as a soldier. After the death of his adopted father, Jango became Mand'alor. After a battle on Galidraan between Jedi and the Mandalorians, Jango was enslaved.</p>
+                <p>A few years later, Hondo Ohnaka freed Jango from his enslavement, and he tracked down and killed the Death Watch leader. With nothing but his armor and his life, Jango turned to bounty hunting.</p>
+            </div>
+            <img src="https://static.wikia.nocookie.net/starwars/images/0/07/Jango-CHRON.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara secondary jedi combo">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Jocasta Nu</p>
+                <p><i>Head Archivist</i></p>
+                <p>FC: Julianne Moore
+            </span></div>
+            <div class="charahover">
+                 <p>"If it isn't in the Archives, it doesn't exist!"</p>
+                <p>EU and New Canon
+                <p><a href="/tagged/ch: Protector of Lore (Jocasta Nu)">Character Tag</a> <a href="/tagged/musing: History Teaches Us Much (Jocasta)">Musings</a> <a href="/tagged/Headcanons: Jocasta">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>The Head Archivist in the Jedi Temple.  Jocasta had a relationship with Count Dooku that lasted most of their lives.  She died well after Order 66, defending the Temple Archives from Darth Vader.</p>
+            </div>
+            <img src="https://68.media.tumblr.com/283e6967cdebfaa35e49894b4e223aa4/tumblr_inline_oswwo5i2Vv1uzh0ol_540.png" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara secondary sith divergent">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Darth Krayt</p>
+                <p><i>Dark Emperor</i></p>
+                <p>FC: ...?
+            </span></div>
+            <div class="charahover">
+                 <p>"I have been through death and conquered it."</p>
+                <p>Heavily Divergent EU Comic Canon
+                <p><a href="/tagged/ch: My Vision is a Unified Galaxy (Darth Krayt)">Character Tag</a> <a href="/tagged/musing: Krayt's Dragons (Krayt)">Musings</a> <a href="/tagged/Headcanons: Krayt">Headcanons</a> <a href="/tagged/aesthetic: Dragon of War (Krayt)">Aesthetic</a></p>
+                <p>A Jedi padawan who witnessed the death of his Master, Krayt was taken in by A’sharad after Order 66, and lived with him and his clan on Tattooine.  After a freak accident involving a krayt dragon that resulted in A’sharad’s death, Krayt adopted his identity in his grief.  He fled Tattooine and wandered until he stumbled across the Korriban Temple, and submitted to the teachings of a Sith holocron.  After this point, the events of Legacy occur.</p>
+                <p>More to be added</p>
+            </div>
+            <img src="https://vignette.wikia.nocookie.net/starwars/images/2/2e/DarthKraytReveal.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara request clone oc">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Lieutenant Linx</p>
+                <p><i>St Francis</i></p>
+                <p>FC: N/A
+            </span></div>
+            <div class="charahover">
+                 <p>"It wasn't like I could move it!"</p>
+                <p><a href="/tagged/ch: I'm Not a Dog of War (Linx)">Character Tag</a> <a href="/tagged/musing: Prefer a Pet (Linx)">Musings</a> <a href="/tagged/Headcanons: Linx">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>Clone lieutenant of Wraith Squad. Linx is often considered the 'baby' of the command crew, too soft for the harsh realities of the war. While he is a good soldier, he would really prefer a quiet day with baby animals to anything involving explosions and death.</p>
+            </div>
+            <img src="https://68.media.tumblr.com/0e33cdda90549041e2b461602a44b01d/tumblr_inline_opur2w6HiR1uzh0ol_540.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara main jedi republic combo divergent">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Mace Windu</p>
+                <p><i>Master</i></p>
+                <p>FC: Samuel Jackson
+            </span></div>
+            <div class="charahover">
+                 <p>"We are peacekeepers, not soldiers."</p>
+                <p>Book and Headcanon
+                <p><a href="/tagged/ch: We Fight For Civilization (Mace Windu)">Character Tag</a> <a href="/tagged/musing: Peace is Just a Slogan (Mace)">Musings</a> <a href="/tagged/Headcanons: Mace">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>One of the youngest Jedi to serve on the High Council.  Mace wielded a purple lightsaber and developed the form of lightsaber combat known as vaapaad.</p>
+            </div>
+            <img src="https://68.media.tumblr.com/5905fea222b46393ee5b0dbababc604c/tumblr_inline_optywmx5Vz1uzh0ol_540.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara secondary sith eu divergent">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Darth Maladi</p>
+                <p><i>Scheming Scientist</i></p>
+                <p>FC: ???
+            </span></div>
+            <div class="charahover">
+                 <p>"I traffic in lies, Lord Nihl, and I know Wyyrlok is lying about Lord Krayt."</p>
+                <p>EU Comic + Headcanon
+                <p><a href="/tagged/ch: I Traffic in Lies (Darth Maladi)">Character Tag</a> <a href="/tagged/musing: By the Poison on Your Lips (Maladi)">Musings</a> <a href="/tagged/Headcanons: Maladi">Headcanons</a> <a href="/tagged/aesthetic: Blood Like Ink (Maladi)">Aesthetic</a></p>
+                <p>A former Jedi padawan taken by Darth Krayt for her healing abilities.  Krayt slew her father in front of her, and trained her in the ways of Sith Alchemy.  Because she was born off of Korriban, Maladi has always been an outcast among Krayt's other Sith, striving to prove herself their equal.  This has caused her to delight in scheming and plotting against the others, as well as in the trust Darth Krayt puts in her.  Her only companion is Darth Nihl, another outcast among the Korriban Sith.</p>
+            </div>
+            <img src="https://i.pinimg.com/originals/85/ec/f6/85ecf606d62e415872adc8e06c9c7cbc.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara request republic canon">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Numa</p>
+                <p><i>Little Sister</i></p>
+            </span></div>
+            <div class="charahover">
+                 <p>"I found a family."</p>
+                <p>Book and Headcanon
+                <p><a href="/tagged/ch: Found a Home (Numa)">Character Tag</a> <a href="/tagged/musing: Eyes Full of Stars (Numa)">Musings</a> <a href="/tagged/Headcanons: Numa">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>A young twi'lek saved by two of the 212th Attack Battalion during the clone wars.  She grew up to be a freedom fighter on Ryloth during the Empire.</p>
+            </div>
+            <img src="https://img02.deviantart.net/2942/i/2016/102/4/5/numa___star_wars_rebels_by_raikoh_illust-d9yqfj7.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara secondary jedi combo eu canon divergent">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Plo Koon</p>
+                <p><i>The Wise</i></p>
+                <p>FC: ???
+            </span></div>
+            <div class="charahover">
+                 <p>"Not to me."</p>
+                <p>Divergent Death, EU + New Canon
+                <p><a href="/tagged/ch: Not To Me (Plo Koon)">Character Tag</a> <a href="/tagged/musing: My Children Are Everything (Plo)">Musings</a> <a href="/tagged/Headcanons: Plo">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>An 500-ish year old Jedi Master who found Ahsoka Tano and brought her to the Temple.  He is a High Councilor.</p>
+            </div>
+            <img src="https://68.media.tumblr.com/2e4765ec4c0d6b0df0a2d6b23b5d42db/tumblr_inline_osww9lfKTV1uzh0ol_540.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara main clone republic oc">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Commander Pony</p>
+                <p><i>Worry</i></p>
+            </span></div>
+            <div class="charahover">
+                <p>"Worry is my name."</p>
+                <p>OC
+                <br><a href="/tagged/ch: Worry is My Name (Pony)">Character Tag</a> <a href="/tagged/musing: Worry Comes with the Job (Pony)">Musings</a> <a href="/tagged/Headcanons: Pony">Headcanons</a> <a href="/tagged/aesthetic: A Splash of Violet in a Silver Flame (Rhaella)">Aesthetic</a></p>
+                <p>CC-3347, otherwise known as Pony, was a clone commander during the Clone Wars. After serving at Geonosis and being given a commendation for valor, he was assigned to Jedi General Siri Tachi. The two quickly became good friend and companions, despite Pony's tendency to worry over her safety.</p>
+            </div>
+            <img src="https://68.media.tumblr.com/0e33cdda90549041e2b461602a44b01d/tumblr_inline_opur2w6HiR1uzh0ol_540.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara main jedi separatist combo eu divergent">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Quinlan Vos</p>
+                <p><i>The Assassin</i></p>
+                <p>FC: ???
+            </span></div>
+            <div class="charahover">
+                 <p>"Quote"</p>
+                <p>EU Primarily, Headcanons and Divergent Post TCW
+                <p><a href="/tagged/ch: I Am Not Your Kind (Quinlan Vos)">Character Tag</a> <a href="/tagged/musing: My Soul is Touched by Darkness (Quinlan)">Musings</a> <a href="/tagged/Headcanons: Quinlan">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>A kiffar Jedi Master during the Clone Wars, Quinlan was a close friend of Obi-Wan Kenobi, and sent undercover to take down the Sith. Blended EU and New Canon canon, see Verses page.</p>
+            </div>
+            <img src="https://www.starwars-universe.com/images/encyclopedie/personnages/avatars_v6/quinlan_vos_avv6.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara main empire jedi sith oc">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Sardu'tet'kosu</p>
+                <p><i>Dutetko, Tet</i></p>
+                <p>FC: ???
+            </span></div>
+            <div class="charahover">
+                 <p>"On my honor, I will not harm you.</p>
+                <p>OC
+                <p><a href="/tagged/ch: I Am Not Strong (Dutetko)">Character Tag</a> <a href="/tagged/musing: More Than My Pain (Dutetko)">Musings</a> <a href="/tagged/Headcanons: Dutetko">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>Tet was a gift send by the Ascendancy to the Empire, a potential Inquisitor.  However, he was rescued by a former Jedi padawan working with the Rebellion named Braig, and taken on as the man's apprentice.  Under Braig's tutelage and parental care, Tet grew into a fine young man.</p>
+            </div>
+            <img src="https://78.media.tumblr.com/f8b562ca40dc437ffa15fdd06090a2ee/tumblr_inline_oxj0sj1qPW1uzh0ol_540.png" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara secondary jedi republic combo eu divergent">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Master Tholme</p>
+                <p><i>The Spymaster</i></p>
+                <p>FC: ???
+            </span></div>
+            <div class="charahover">
+                <p>"Things escalated."</p>
+                <p>EU Comics + Headcanons
+                <p><a href="/tagged/ch: Things Escalated (Master Tholme)">Character Tag</a> <a href="/tagged/musing: I Belong to the Shadows (Tholme)">Musings</a> <a href="/tagged/Headcanons: Tholme">Headcanons</a> <a href="/tagged/">Aesthetic</a></p>
+
+                <p>Master Tholme was a human Jedi Master who specialized in the healing arts of the Force. During his time as a Knight, he trained on the planet Anzat to enhance his anturally powerful skills, which dealt mainly in subterfuge and manipulation, where he honed a particular talent for death trances and masking his presence in the Force. Shortly after his reaching the rank of Master, he was made the system protector of the planet Kiffu. It was here he met his future padawan, Quinlan Vos, through his friendship with the then-current Sheyf, Quinlan's great-uncle.</p>
+                <p>After the death of Quinlan's parents, and the subsequent trauma suffered by his padawan, Tholme took the boy to the Temple to train. During this time they fought in the Stark Hyperspace War, investigating the mysterious bacta shortage that preceded it and eventually fighting in the war themselves.</p>
+                <p>Serving as the Council's spymaster due to his particularly strong talent for masking his Force signature, Tholme was sent undercover to watch his former padawan when he was sent to Kiffex, to judge whether or not he was prone to Falling after losing his memories. During this mission, he helped to rescue his new student, Aayla Secura, Quinlan's former padawan.
+                <br>During the Clone Wars, Tholme lost a leg and an eye to Count Dooku, but survived their duel, replacing both with prosthetics and continuing to serve the Jedi. He survived Order 66, and lived with his lover T'ra Sa on the planet Kahyyk, until his death. His funeral pyre was held on the planet Anzat.
+            </div>
+            <img src="https://68.media.tumblr.com/c513db5b226aabc711cddf0aca963c67/tumblr_inline_opurvimikh1uzh0ol_540.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara main empire republic combo divergent eu">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Wulff Yularen</p>
+                <p><i>The Admiral</i></p>
+                <p>FC: David Niven
+            </span></div>
+            <div class="charahover">
+                <p>"I can't define a hero. All I know is that it's someone you probably don't notice, but when you find out what they did and how modestly they did it, you can never shake off the feeling that you're cut from a lesser cloth, and you find that braggarts suddenly offend you a great deal more than usual."</p>
+                <p>EU + TCW canon, divergent
+                <p><a href="/tagged/ch: Resolute Admiral (Wulff Yularen)">Character Tag</a> <a href="/tagged/musing: Can't Define a Hero (Yularen)">Musings</a> <a href="/tagged/Headcanons: Yularen">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>Wullf Yularen started life with a silver spoon. Son of a prominent Coruscanti family, his choice to join the Navy was, in many circles, seen as a disgrace. The youth's insistence on being treated like a normal recruit and not taking advantage of his position, earned him the scorn of many of the established Core World families.
+                <p>After several tours through the Outer Rim, and nearly a decade spent as an intelligence officer in the Sneatorial Guard, and the outbreak of the Clone Wars, Yularen was named to the rank of admiral, and served under Jedi Knight Anakin Skywalker. While fond of his commander, and the clones who made up the bulk of his crew, he found his general too reckless for his liking. During the War he served with competent, quiet stability to offset his general's more boisterous nature...
+                <p>With the formation of the Empire, and the significant changes that followed, Yularen resigned his position in the Navy, and joined the Imperial Security Bureau. He rose quickly through the ranks there as well, eventually landing himself as the second-highest ranking officer within the internal security branch.
+</p>
+            </div>
+            <img src="https://68.media.tumblr.com/6a39eb5369dbcd46d154f96bdcaa6b84/tumblr_inline_optys6tCG91uzh0ol_540.png" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara secondary criminal eu">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>Zam Wesell</p>
+                <p><i>The Shifter</i></p>
+                <p>FC: ???
+            </span></div>
+            <div class="charahover">
+                 <p>"You <i>do</i> recognize me. I wasn't sure you would, given my state… of undress."</p>
+                <p>EU Comics + Headcanon
+                <p><a href="/tagged/ch: Until Next Time (Zam Wesell)">Character Tag</a> <a href="/tagged/musing: Rebellion Comes in Many Forms (Zam)">Musings</a> <a href="/tagged/Headcanons: Zam">Headcanons</a> <a href="/tagged/aesthetic: ">Aesthetic</a></p>
+                <p>Born on the rather backward world of Zolan, Zam is a member of the clawdite race.  Facing persecution and oppression by the native zolanders, Zam left her homeworld and sought glory and riches in the stars, becoming a bounty hunter.  Eventually, this career led her to meet Jango Fett, who became a close friend over the years.</p>
+            </div>
+            <img src="https://i.pinimg.com/originals/bb/d7/44/bbd744db73d429e05c60d87643d1b6fe.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara open male vampire">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>NAME</p>
+                <p><i>Title</i></p>
+                <p>FC: 
+            </span></div>
+            <div class="charahover">
+                 <p>Quote</p>
+                <p>Book and Headcanon
+                <p><a href="/tagged/ch: A Cool Fire and Calm head (Visenya Targaryen)">Character Tag</a> <a href="/tagged/musing: Dragon of War (Visenya)">Musings</a> <a href="/tagged/Headcanons: Visenya">Headcanons</a> <a href="/tagged/aesthetic: Thoughts Like Quicksilver (Visenya)">Aesthetic</a></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum metus, placerat eget turpis vel, commodo ullamcorper velit. Cras elementum, massa id commodo tincidunt, augue ante dictum arcu, in iaculis ligula dolor non lacus. Cras vitae quam ac libero eleifend maximus vitae ac lacus. Fusce id augue sapien. In nec posuere ligula. Nam pulvinar sem semper mi aliquam cursus. Aliquam nulla turpis, egestas non eros in, luctus semper augue. Fusce facilisis erat ante, lacinia elementum turpis porta ac.</p>
+                <p>Quisque sagittis in augue sit amet vestibulum. Suspendisse quis elementum dolor. Proin molestie rutrum elit, a blandit diam dictum sit amet. Curabitur sed lobortis nulla. Pellentesque vitae molestie magna, sed gravida arcu. Vivamus sit amet justo id nisi pretium placerat vel eget ligula. Donec ac turpis ex. Nulla quis pulvinar leo.</p>
+            </div>
+            <img src="http://i975.photobucket.com/albums/ae237/heaventemptress/EXTRABGSSSSSSSSSSSSSS/fantasy-dark--Rocks-My-World--fantasy--vampire--favorites--male--vamp--satisfied--blood--Goth-and-Special-Pics--Other-2--man--Halloween-Imag.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara open male vampire">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>NAME</p>
+                <p><i>Title</i></p>
+                <p>FC: 
+            </span></div>
+            <div class="charahover">
+                 <p>Quote</p>
+                <p>Book and Headcanon
+                <p><a href="/tagged/ch: A Cool Fire and Calm head (Visenya Targaryen)">Character Tag</a> <a href="/tagged/musing: Dragon of War (Visenya)">Musings</a> <a href="/tagged/Headcanons: Visenya">Headcanons</a> <a href="/tagged/aesthetic: Thoughts Like Quicksilver (Visenya)">Aesthetic</a></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum metus, placerat eget turpis vel, commodo ullamcorper velit. Cras elementum, massa id commodo tincidunt, augue ante dictum arcu, in iaculis ligula dolor non lacus. Cras vitae quam ac libero eleifend maximus vitae ac lacus. Fusce id augue sapien. In nec posuere ligula. Nam pulvinar sem semper mi aliquam cursus. Aliquam nulla turpis, egestas non eros in, luctus semper augue. Fusce facilisis erat ante, lacinia elementum turpis porta ac.</p>
+                <p>Quisque sagittis in augue sit amet vestibulum. Suspendisse quis elementum dolor. Proin molestie rutrum elit, a blandit diam dictum sit amet. Curabitur sed lobortis nulla. Pellentesque vitae molestie magna, sed gravida arcu. Vivamus sit amet justo id nisi pretium placerat vel eget ligula. Donec ac turpis ex. Nulla quis pulvinar leo.</p>
+            </div>
+            <img src="http://i975.photobucket.com/albums/ae237/heaventemptress/EXTRABGSSSSSSSSSSSSSS/fantasy-dark--Rocks-My-World--fantasy--vampire--favorites--male--vamp--satisfied--blood--Goth-and-Special-Pics--Other-2--man--Halloween-Imag.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara open male vampire">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>NAME</p>
+                <p><i>Title</i></p>
+                <p>FC: 
+            </span></div>
+            <div class="charahover">
+                 <p>Quote</p>
+                <p>Book and Headcanon
+                <p><a href="/tagged/ch: A Cool Fire and Calm head (Visenya Targaryen)">Character Tag</a> <a href="/tagged/musing: Dragon of War (Visenya)">Musings</a> <a href="/tagged/Headcanons: Visenya">Headcanons</a> <a href="/tagged/aesthetic: Thoughts Like Quicksilver (Visenya)">Aesthetic</a></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum metus, placerat eget turpis vel, commodo ullamcorper velit. Cras elementum, massa id commodo tincidunt, augue ante dictum arcu, in iaculis ligula dolor non lacus. Cras vitae quam ac libero eleifend maximus vitae ac lacus. Fusce id augue sapien. In nec posuere ligula. Nam pulvinar sem semper mi aliquam cursus. Aliquam nulla turpis, egestas non eros in, luctus semper augue. Fusce facilisis erat ante, lacinia elementum turpis porta ac.</p>
+                <p>Quisque sagittis in augue sit amet vestibulum. Suspendisse quis elementum dolor. Proin molestie rutrum elit, a blandit diam dictum sit amet. Curabitur sed lobortis nulla. Pellentesque vitae molestie magna, sed gravida arcu. Vivamus sit amet justo id nisi pretium placerat vel eget ligula. Donec ac turpis ex. Nulla quis pulvinar leo.</p>
+            </div>
+            <img src="http://i975.photobucket.com/albums/ae237/heaventemptress/EXTRABGSSSSSSSSSSSSSS/fantasy-dark--Rocks-My-World--fantasy--vampire--favorites--male--vamp--satisfied--blood--Goth-and-Special-Pics--Other-2--man--Halloween-Imag.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        <!-- BEGIN COPY PASTE -->
+        <div class="chara open male vampire">
+            <div class="charatitle"><span>
+                <!-- This is where the title text goes. Keep it in the p tags. It looks best with 2 lines of text.-->
+                <p>NAME</p>
+                <p><i>Title</i></p>
+                <p>FC: 
+            </span></div>
+            <div class="charahover">
+                 <p>Quote</p>
+                <p>Book and Headcanon
+                <p><a href="/tagged/ch: A Cool Fire and Calm head (Visenya Targaryen)">Character Tag</a> <a href="/tagged/musing: Dragon of War (Visenya)">Musings</a> <a href="/tagged/Headcanons: Visenya">Headcanons</a> <a href="/tagged/aesthetic: Thoughts Like Quicksilver (Visenya)">Aesthetic</a></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum metus, placerat eget turpis vel, commodo ullamcorper velit. Cras elementum, massa id commodo tincidunt, augue ante dictum arcu, in iaculis ligula dolor non lacus. Cras vitae quam ac libero eleifend maximus vitae ac lacus. Fusce id augue sapien. In nec posuere ligula. Nam pulvinar sem semper mi aliquam cursus. Aliquam nulla turpis, egestas non eros in, luctus semper augue. Fusce facilisis erat ante, lacinia elementum turpis porta ac.</p>
+                <p>Quisque sagittis in augue sit amet vestibulum. Suspendisse quis elementum dolor. Proin molestie rutrum elit, a blandit diam dictum sit amet. Curabitur sed lobortis nulla. Pellentesque vitae molestie magna, sed gravida arcu. Vivamus sit amet justo id nisi pretium placerat vel eget ligula. Donec ac turpis ex. Nulla quis pulvinar leo.</p>
+            </div>
+            <img src="http://i975.photobucket.com/albums/ae237/heaventemptress/EXTRABGSSSSSSSSSSSSSS/fantasy-dark--Rocks-My-World--fantasy--vampire--favorites--male--vamp--satisfied--blood--Goth-and-Special-Pics--Other-2--man--Halloween-Imag.jpg" class="charaimg"> <!-- Put the url for your image between the quotes in src="". Images will look best at 200px by 250px. -->
+        </div>
+        <!-- END COPY PASTE -->
+        
+        
+        
+        
+        
+    </div> <!-- Don't put any character boxes after this tag! -->
+    <a href="http://hendrixrph.tumblr.com"><div class="credit">hendrixrph</div></a>
+    
+    
+    <!-- All the filtering scripts. No need to mess with these unless you know what you're doing. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.0/isotope.pkgd.js"></script>
+    <script>
+        
+// external js: isotope.pkgd.js
+
+$(document).ready( function() {
+  // init Isotope
+  var $grid = $('.wrapper').isotope({
+    itemSelector: '.chara'
+  });
+
+  // store filter for each group
+  var filters = {};
+
+  $('.filters').on( 'click', '.button', function() {
+    var $this = $(this);
+    // get group key
+    var $buttonGroup = $this.parents('.button-group');
+    var filterGroup = $buttonGroup.attr('data-filter-group');
+    // set filter for group
+    filters[ filterGroup ] = $this.attr('data-filter');
+    // combine filters
+    var filterValue = concatValues( filters );
+    // set filter for Isotope
+    $grid.isotope({ filter: filterValue });
+  });
+
+  // change is-checked class on buttons
+  $('.button-group').each( function( i, buttonGroup ) {
+    var $buttonGroup = $( buttonGroup );
+    $buttonGroup.on( 'click', 'button', function() {
+      $buttonGroup.find('.ischecked').removeClass('ischecked');
+      $( this ).addClass('ischecked');
+    });
+  });
+  
+});
+
+// flatten object by concatting values
+function concatValues( obj ) {
+  var value = '';
+  for ( var prop in obj ) {
+    value += obj[ prop ];
+  }
+  return value;
+}
+        
+    </script>
+    
+</body>
+
+</html>
